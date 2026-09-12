@@ -72,6 +72,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      - name: Configure kubectl for EKS
+        run: aws eks update-kubeconfig --name cluster --region ${{ secrets.AWS_REGION }}
+
       - name: Get backend LoadBalancer URL
         id: backend-url
         run: |
